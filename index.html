@@ -144,7 +144,7 @@
         }).catch(err => console.error('Failed to copy text: ', err));
      });
 
-    form.addEventListener('submit', async (e) => {
+     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const file = imageInput.files[0];
@@ -162,7 +162,7 @@
       const formData = new FormData();
       formData.append('image', file);
 
-      outputDiv.innerHTML = '<div class="loading-spinner"></div>';
+       outputDiv.innerHTML = '<div class="loading-spinner"></div>';
 
       try {
         const response = await fetch('/upload', {
@@ -173,24 +173,19 @@
         if (!response.ok) {
           const errorMessage = await response.text();
           outputDiv.innerHTML = `Error: ${errorMessage}`;
-          console.error("Error processing image:", errorMessage);
-          return;
+            console.error("Error processing image:", errorMessage);
         }
 
-        const result = await response.json();
-        if (result.error) {
-          outputDiv.innerHTML = `Error: ${result.error}`;
-        } else {
-          // Parse markdown and then process with MathJax
-          outputDiv.innerHTML = marked.parse(result.formatted_answer);
-          MathJax.typesetPromise([outputDiv])
-            .catch(err => console.log('Typeset failed: ' + err.message));
-        }
+        const result = await response.text();
+         // Parse markdown and then process with MathJax
+         outputDiv.innerHTML = marked.parse(result);
+         MathJax.typesetPromise([outputDiv])
+           .catch(err => console.log('Typeset failed: ' + err.message));
         updateButtonVisibility(true);
 
       } catch (error) {
         outputDiv.innerHTML = `Error: ${error.message}`;
-        console.error('Error:', error);
+         console.error('Error:', error);
       }
     });
   </script>
