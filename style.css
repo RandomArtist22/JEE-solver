@@ -9,7 +9,7 @@ body {
     align-items: center;
     min-height: 100vh;
     transition: background 0.3s ease;
-    font-size: 16px;
+    font-size: 18px; /* Increased base font size */
 }
 
 .container {
@@ -26,19 +26,19 @@ h1 {
     text-align: center;
     margin: 20px 0;
     color: #667eea;
-    font-weight: 400;
+    font-weight: 500; /* Slightly bolder */
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 1px; /* Increased letter spacing */
     transition: color 0.3s ease;
-    font-size: 2.2em;
+    font-size: 2.5em; /* Larger heading */
 }
 
 .card {
     width: 100%;
     background-color: #2d3748;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* More rounded corners */
+    padding: 25px; /* Increased padding */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow */
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -49,8 +49,8 @@ h1 {
 }
 
 .card:hover {
-    transform: scale(1.01);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02); /* Subtle scale on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 #upload-form {
@@ -61,12 +61,12 @@ h1 {
 }
 
 #upload-form input[type="file"] {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 15px;
+    margin-bottom: 15px; /* Increased margin */
+    padding: 12px; /* Increased padding */
+    font-size: 16px; /* Larger font size */
     border: none;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 8px; /* More rounded corners */
+    background-color: rgba(255, 255, 255, 0.06); /* Slightly darker background */
     color: #e2e8f0;
     flex-grow: 1;
     box-sizing: border-box;
@@ -87,42 +87,43 @@ h1 {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 20px; /* Increased padding */
 }
 
 .drop-zone p {
-    padding: 8px;
-    font-size: 15px;
+    padding: 12px; /* Increased padding */
+    font-size: 16px; /* Larger font size */
     border: none;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 8px; /* More rounded corners */
+    background-color: rgba(255, 255, 255, 0.06); /* Slightly darker background */
     color: #e2e8f0;
     transition: color 0.3s ease;
-    margin-bottom: 5px;
+    margin-bottom: 10px; /* Increased margin */
 }
 
 #allowed-file-types {
-    font-size: 12px;
+    font-size: 14px; /* Larger font size */
     color: #94a3b8;
     text-align: center;
-    margin-top: 0;
+    margin-top: 5px; /* Adjusted margin */
 }
 
 .drop-zone {
     position: relative;
-    border: 2px dashed rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+    border: 2px dashed rgba(255, 255, 255, 0.15); /* Brighter dashed border */
+    border-radius: 12px; /* More rounded corners */
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 160px;
+    height: 180px; /* Increased height */
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Increased margin */
     overflow: hidden;
-    min-height: 80px;
+    min-height: 100px;
 }
 
 .drop-zone.dragover {
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: rgba(255, 255, 255, 0.1); /* Brighter background on drag */
     border-color: #667eea;
 }
 
@@ -131,15 +132,15 @@ h1 {
 }
 
 #upload-form input[type="file"]::file-selector-button {
-    padding: 8px 12px;
+    padding: 10px 16px; /* Increased padding */
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* More rounded corners */
     background-color: #667eea;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    margin-right: 10px;
-    font-size: 14px;
+    margin-right: 12px; /* Increased margin */
+    font-size: 16px; /* Larger font size */
 }
 
 #upload-form input[type="file"]::file-selector-button:hover {
@@ -147,34 +148,34 @@ h1 {
 }
 
 #upload-form button {
-    padding: 12px 20px; /* Increased padding */
+    padding: 14px 24px; /* Increased padding */
     border: none;
-    border-radius: 8px; /* More rounded corners */
+    border-radius: 12px; /* More rounded corners */
     background: linear-gradient(to bottom, #667eea, #5a67d8); /* Subtle gradient */
     color: #fff;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px; /* Larger font size */
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     align-self: center;
-    font-weight: 500;
-    margin-top: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added subtle shadow */
+    font-weight: 500; /* Slightly bolder */
+    margin-top: 15px; /* Increased margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow */
 }
 
 #upload-form button:hover {
     background: linear-gradient(to bottom, #5a67d8, #4f54c2);
-    transform: scale(1.03); /* Subtle scale on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+    transform: scale(1.05); /* Slightly larger scale on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
 .output-box {
     position: relative;
     width: 100%;
     margin: 0;
-    padding: 20px;
-    border-radius: 0 0 10px 10px;
+    padding: 25px; /* Increased padding */
+    border-radius: 0 0 12px 12px; /* More rounded corners */
     background-color: #2d3748;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Deeper shadow */
     overflow-y: auto;
     word-wrap: break-word;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -291,15 +292,19 @@ h1 {
 
 @media (max-width: 768px) {
     .container {
-        width: 95%;
-        padding: 10px;
-    }
-
-    .card {
         padding: 15px;
     }
 
-    #upload-form button {
+    h1 {
+        font-size: 2em;
+    }
+
+    .drop-zone {
+        height: 150px;
+    }
+
+    button {
+        padding: 12px 20px;
         font-size: 14px;
     }
 }
@@ -308,24 +313,18 @@ h1 {
     border: 4px solid #667eea;
     border-top: 4px solid transparent;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    animation: spin 0.8s linear infinite;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
 }
 
 @keyframes spin {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .image-container {
@@ -333,10 +332,11 @@ h1 {
     align-items: center;
     justify-content: center;
     max-width: 100%;
-    border: 1px solid #4a5568;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border: 2px solid #667eea;
+    border-radius: 15px;
+    margin-bottom: 15px;
     overflow: hidden;
+    transition: border-color 0.3s ease;
 }
 
 .image-container img {
@@ -348,26 +348,26 @@ h1 {
 
 .button-container {
     display: flex;
-    gap: 10px;
+    gap: 12px; /* Increased gap */
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Increased margin */
     transition: opacity 0.3s ease;
 }
 
 .button-container button {
-    padding: 12px 20px; /* Increased padding */
+    padding: 14px 24px; /* Increased padding */
     border: none;
-    border-radius: 8px; /* More rounded corners */
+    border-radius: 12px; /* More rounded corners */
     background: linear-gradient(to bottom, #4a5568, #374151); /* Updated gradient */
     color: #fff;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px; /* Larger font size */
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow */
 }
 
 .button-container button:hover {
-     background: linear-gradient(to bottom, #374151, #2d3748);
-    transform: scale(1.03);
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to bottom, #374151, #2d3748);
+    transform: scale(1.05); /* Slightly larger scale on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
