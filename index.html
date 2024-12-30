@@ -4,23 +4,23 @@
   <title>AI Solve</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
-   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']],
-          processEscapes: true,
-          processEnvironments: true
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-          ignoreHtmlClass: 'tex2jax_ignore',
-          processHtmlClass: 'tex2jax_process'
-        }
-      };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     // Configure marked.js to preserve $ delimiters
@@ -33,26 +33,26 @@
 <body>
   <div class="container">
     <h1>AI Solve</h1>
-      <div class="card">
-        <form id="upload-form">
-          <div id="drop-zone" class="drop-zone">
-              <input type="file" id="image" name="image" accept="image/*" capture="environment" multiple>
-              <div class="drop-zone-label">
-               <p>Drag and drop an image here or click to browse.</p>
-                <div id="allowed-file-types">Allowed file types: jpeg, png, gif</div>
-              </div>
+    <div class="card">
+      <form id="upload-form">
+        <div id="drop-zone" class="drop-zone">
+          <input type="file" id="image" name="image" accept="image/*" multiple>
+          <div class="drop-zone-label">
+            <p>Drag and drop an image here or click to browse.</p>
+            <div id="allowed-file-types">Allowed file types: jpeg, png, gif</div>
           </div>
-           <button type="submit">Process Image</button>
-        </form>
-         <div id="image-container" class="image-container" style="display:none;"></div>
-        <div id="output" class="output-box"></div>
-      </div>
-      <div class="button-container" style="display:none;">
-          <button id="copy-button" type="button" >Copy</button>
-          <button id="reset-button" type="button" >Reset Image</button>
-          <button id="clear-output-button" type="button" >Clear Output</button>
-          <button id="regenerate-button" type="button" >Regenerate Answer</button>
-      </div>
+        </div>
+        <button type="submit">Process Image</button>
+      </form>
+      <div id="image-container" class="image-container" style="display:none;"></div>
+      <div id="output" class="output-box"></div>
+    </div>
+    <div class="button-container" style="display:none;">
+      <button id="copy-button" type="button">Copy</button>
+      <button id="reset-button" type="button">Reset Image</button>
+      <button id="clear-output-button" type="button">Clear Output</button>
+      <button id="regenerate-button" type="button">Regenerate Answer</button>
+    </div>
   </div>
 
   <script>
@@ -68,84 +68,84 @@
     const regenerateButton = document.getElementById('regenerate-button');
     let timeoutId;
 
-     dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.classList.add('dragover');
-     });
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
 
-     dropZone.addEventListener('dragleave', (e) => {
-        e.preventDefault();
-         dropZone.classList.remove('dragover');
-     });
+    dropZone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+    });
 
     dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-         dropZone.classList.remove('dragover');
-        imageInput.files = e.dataTransfer.files;
-        handleImageUpload();
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      imageInput.files = e.dataTransfer.files;
+      handleImageUpload();
     });
-    
+
     imageInput.addEventListener('change', () => {
       clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            handleImageUpload();
-         }, 200); // debounce time
+      timeoutId = setTimeout(() => {
+        handleImageUpload();
+      }, 200); // debounce time
     });
-    
+
     function updateButtonVisibility(show) {
       buttonContainer.style.display = show ? 'flex' : 'none';
     }
 
-    async function handleImageUpload(){
+    async function handleImageUpload() {
       const file = imageInput.files[0];
-         if (file) {
-             form.style.display = 'none';
-              buttonContainer.style.display = 'flex';
-             imageContainer.style.display = 'flex';
-             imageContainer.innerHTML = '';
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              const img = document.createElement('img');
-              img.src = e.target.result;
-                imageContainer.appendChild(img);
+      if (file) {
+        form.style.display = 'none';
+        buttonContainer.style.display = 'flex';
+        imageContainer.style.display = 'flex';
+        imageContainer.innerHTML = '';
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          imageContainer.appendChild(img);
 
-                 img.onload = function() {
-                    const aspectRatio = img.naturalWidth / img.naturalHeight;
-                     imageContainer.style.height = `${imageContainer.clientWidth / aspectRatio}px`;
-                }
-             
-                form.dispatchEvent(new Event('submit'));
-            };
-             reader.readAsDataURL(file);
-        }
+          img.onload = function () {
+            const aspectRatio = img.naturalWidth / img.naturalHeight;
+            imageContainer.style.height = `${imageContainer.clientWidth / aspectRatio}px`;
+          }
+
+          form.dispatchEvent(new Event('submit'));
+        };
+        reader.readAsDataURL(file);
+      }
     }
 
-     clearOutputButton.addEventListener('click', ()=>{
-         outputDiv.innerHTML = '';
-     });
-
-     resetButton.addEventListener('click', () => {
-          form.style.display = 'flex';
-            imageContainer.style.display = 'none';
-            imageInput.value = '';
-            buttonContainer.style.display = 'none';
-            outputDiv.innerHTML = '';
-      });
-
-    regenerateButton.addEventListener('click', () => {
-        if (imageInput.files[0]) {
-            form.dispatchEvent(new Event('submit'));
-        }
+    clearOutputButton.addEventListener('click', () => {
+      outputDiv.innerHTML = '';
     });
 
-     copyButton.addEventListener('click', () => {
-          const text = outputDiv.innerText;
-        navigator.clipboard.writeText(text).then(()=>{
-            alert("Output copied to clipboard");
-        }).catch(err => console.error('Failed to copy text: ', err));
-     });
+    resetButton.addEventListener('click', () => {
+      form.style.display = 'flex';
+      imageContainer.style.display = 'none';
+      imageInput.value = '';
+      buttonContainer.style.display = 'none';
+      outputDiv.innerHTML = '';
+    });
 
-     form.addEventListener('submit', async (e) => {
+    regenerateButton.addEventListener('click', () => {
+      if (imageInput.files[0]) {
+        form.dispatchEvent(new Event('submit'));
+      }
+    });
+
+    copyButton.addEventListener('click', () => {
+      const text = outputDiv.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Output copied to clipboard");
+      }).catch(err => console.error('Failed to copy text: ', err));
+    });
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const file = imageInput.files[0];
@@ -163,7 +163,7 @@
       const formData = new FormData();
       formData.append('image', file);
 
-       outputDiv.innerHTML = '<div class="loading-spinner"></div>';
+      outputDiv.innerHTML = '<div class="loading-spinner"></div>';
 
       try {
         const response = await fetch('/upload', {
@@ -174,19 +174,19 @@
         if (!response.ok) {
           const errorMessage = await response.text();
           outputDiv.innerHTML = `Error: ${errorMessage}`;
-            console.error("Error processing image:", errorMessage);
+          console.error("Error processing image:", errorMessage);
         }
 
         const result = await response.text();
-         // Parse markdown and then process with MathJax
-         outputDiv.innerHTML = marked.parse(result);
-         MathJax.typesetPromise([outputDiv])
-           .catch(err => console.log('Typeset failed: ' + err.message));
+        // Parse markdown and then process with MathJax
+        outputDiv.innerHTML = marked.parse(result);
+        MathJax.typesetPromise([outputDiv])
+          .catch(err => console.log('Typeset failed: ' + err.message));
         updateButtonVisibility(true);
 
       } catch (error) {
         outputDiv.innerHTML = `Error: ${error.message}`;
-         console.error('Error:', error);
+        console.error('Error:', error);
       }
     });
   </script>
